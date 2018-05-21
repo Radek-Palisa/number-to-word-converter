@@ -1,10 +1,18 @@
 {
-  "name": "number-to-word-converter",
-  "version": "1.0.0",
-  "main": "server.js",
-  "author": "Radek Palisa",
-  "license": "MIT",
-  "dependencies": {
+    "name": "number-to-word-converter",
+    "version": "1.0.0",
+    "main": "server.js",
+    "author": "Radek Palisa",
+    "license": "MIT",
+    "scripts": {
+        "client": "cd client && yarn start",
+        "server": "nodemon server.js",
+        "dev": "concurrently --kill-others-on-fail \"yarn server\" \"yarn client\""
+    },
+    "dependencies": {
     "express": "^4.16.3"
-  }
+    },
+    "devDependencies": {
+    "concurrently": "^3.5.1"
+    }
 }
