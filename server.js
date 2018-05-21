@@ -1,4 +1,5 @@
 const express = require('express')
+const bodyParser = require('body-parser')
 const morgan = require('morgan')
 const apiRoutes = require('./api/routes/routes')
 
@@ -7,6 +8,8 @@ const port = process.env.PORT || 5000
 
 // requests logging into console
 app.use(morgan('dev'))
+app.use(bodyParser.urlencoded({extended: false}))
+app.use(bodyParser.json())
 
 // api routes
 app.use('/api', apiRoutes)

@@ -1,8 +1,12 @@
 const Converter = require('../models/Converter')
 
 module.exports = {
-    convert (req, res) {
-        const conversion = Converter.convert('Hello', 'world')
-        res.send({ express: conversion })
+    async convert (req, res) {
+        try {
+            const conversion = await Converter.convert(req.body.numericString)
+            res.send({ words: conversion })
+        } catch (error) {
+            res.status(500).send({error})
+        }
     }
 }

@@ -3,6 +3,6 @@ const converter = require('../controllers/converter')
 
 const router = express()
 
-router.get('/', converter.convert)
+router.post('/convert', converter.convert)
 
 module.exports = router
