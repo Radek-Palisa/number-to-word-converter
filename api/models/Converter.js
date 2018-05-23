@@ -1,4 +1,5 @@
-const dict = require('../dictionary/trieDictionary')
+// const dict = require('../dictionary/trieDictionary')
+const dict = require('../dictionary/trieDictionaryLarge')
 
 const t9 = [
     [' '], // 0
