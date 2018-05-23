@@ -66,9 +66,12 @@ module.exports = {
         return new Promise((resolve, reject) => {
             const results = t9Words(numericString)
 
-            const realWords = results.filter(word => filterDictForRealWords(word))
-
-            resolve(realWords)
+            if (results.length < 5) {
+                resolve(results)
+            } else {
+                const realWords = results.filter(word => filterDictForRealWords(word))
+                resolve(realWords)
+            }
         })
     }
 }
