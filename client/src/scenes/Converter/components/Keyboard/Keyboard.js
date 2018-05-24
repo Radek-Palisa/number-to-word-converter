@@ -75,7 +75,7 @@ class Keyboard extends Component {
                 this.handleSpaceClick();
                 break;
             case '1':
-                console.log('number 1 does nothing, sorry');
+                console.log('clicking number 1 does nothing at version 1.0.0, sorry');
                 break;
             default:
                 this.handleNumberClick(buttonProps.number, buttonProps.letters[0])

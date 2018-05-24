@@ -11,6 +11,12 @@ class DisplayInput extends Component {
                 <br />
                 Message: 
                 {this.props.currentMessage} 
+                <br />
+                <button 
+                    type="submit"
+                    onClick={this.props.submitMessage}>
+                    Submit
+                </button>
             </div>
         );
     }

@@ -6,6 +6,11 @@ class DisplayMessages extends Component {
     return (
         <div>
             DisplayMessages
+            <ol>
+                {this.props.messages.map((message, i) => {
+                    return <li key={i}>{message.text}</li>
+                })}
+            </ol>
             <MessageItem />
         </div>
     );

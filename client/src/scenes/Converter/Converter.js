@@ -8,6 +8,7 @@ class Converter extends Component {
     constructor(props) {
         super()
         this.state = {
+            messages: [],
             currentMessage: '',
             currentInput: {
                 numbers: '',
@@ -20,10 +21,11 @@ class Converter extends Component {
         this.updateCurrentInput = this.updateCurrentInput.bind(this)
         this.addWord = this.addWord.bind(this);
         this.deleteWord = this.deleteWord.bind(this);
+        this.submitMessage = this.submitMessage.bind(this);
     }
 
-    updateCurrentInput(value) {
-        this.setState({currentInput: value})
+    updateCurrentInput(newValues) {
+        this.setState({currentInput: newValues})
     }
 
     addWord(word) {
@@ -67,13 +69,27 @@ class Converter extends Component {
         }
     }
 
+    submitMessage() {
+        const messages = this.state.messages;
+        messages.push({
+            position: 'right',
+            text: (this.state.currentMessage + this.state.currentInput.letters).trim()
+        })
+        this.setState({
+            messages,
+            currentMessage: '',
+            currentInput: { numbers: '', letters: '' }
+        })
+    }
+
     render() {
         return (
             <div>
-                <DisplayMessages />
+                <DisplayMessages messages={this.state.messages} />
                 <DisplayInput 
                     currentMessage={this.state.currentMessage}
-                    currentInput={this.state.currentInput} />
+                    currentInput={this.state.currentInput}
+                    submitMessage={this.submitMessage} />
                 <Suggestions 
                     suggestions={this.state.suggestions}
                     addWord={this.addWord} />
