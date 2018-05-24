@@ -43,7 +43,9 @@ class Keyboard extends Component {
             numbers: this.state.currentInput.numbers.slice(0, -1),
             letters: this.state.currentInput.letters.slice(0, -1)
         }
-        this.props.updateCurrentInput(updatedInputValues)    
+        this.state.currentInput.letters ?
+            this.props.updateCurrentInput(updatedInputValues) :
+            this.props.deleteWord()
     }
 
     handleNumberClick(newNumber, newLetter) {
