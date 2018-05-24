@@ -17,71 +17,72 @@ const t9 = [
 ]
 
 class Keyboard extends Component {
-
     constructor(props) {
         super(props);
         this.state = {
             currentInput: {
-                numbers: '',
-                letters: ''
+                numbers: this.props.currentInputValues.numbers,
+                letters: this.props.currentInputValues.letters
             }
         }
 
+        this.handleEraseClick = this.handleEraseClick.bind(this);
+        this.handleNumberClick = this.handleNumberClick.bind(this);
+        this.handleSpaceClick = this.handleSpaceClick.bind(this);
         this.handleButtonClick = this.handleButtonClick.bind(this);
-        this.submitInput = this.submitInput.bind(this);
     }
 
-    componentDidUpdate() {
-        console.log(this.state.currentInput)
+    static getDerivedStateFromProps(nextProps) {
+        return {
+          currentInput: nextProps.currentInputValues
+        };
+    }
 
-        if (this.state.currentInput.numbers) {
-            console.log('gonna fetch suggestions')
-        } else {
-            // ask DisplayInput if previous word need to be deleted
+    handleEraseClick() {
+        const updatedInputValues = {
+            numbers: this.state.currentInput.numbers.slice(0, -1),
+            letters: this.state.currentInput.letters.slice(0, -1)
         }
+        this.props.updateCurrentInput(updatedInputValues)    
+    }
+
+    handleNumberClick(newNumber, newLetter) {
+        const updatedInputValues = {
+            numbers: this.state.currentInput.numbers + newNumber,
+            letters: this.state.currentInput.letters + newLetter
+        }
+        this.props.updateCurrentInput(updatedInputValues)
+    }
+
+    handleSpaceClick() {
+        this.state.currentInput.letters ?
+            this.props.addWord(this.state.currentInput.letters) :
+            this.props.addWord('')
     }
 
     handleButtonClick(buttonProps) {
-
         switch (buttonProps.number) {
             case '|':
                 // TODO: implement uppercasing
-                console.log('uppercase');
+                console.log('uppercase it');
                 break;
             case 'X':
-                this.setState(prevState => ({ 
-                    currentInput: {
-                        numbers: prevState.currentInput.numbers.slice(0, -1),
-                        letters: prevState.currentInput.letters.slice(0, -1)
-                    }
-                }))
+                this.handleEraseClick();
                 break;   
             case '0':
-                this.submitInput();
+                this.handleSpaceClick();
                 break;
             case '1':
                 console.log('number 1 does nothing, sorry');
                 break;
             default:
-                this.setState(prevState => ({ 
-                    currentInput: {
-                        numbers: prevState.currentInput.numbers + buttonProps.number,
-                        letters: prevState.currentInput.letters + buttonProps.letters[0]
-                    }
-                }))      
+                this.handleNumberClick(buttonProps.number, buttonProps.letters[0])
         }
-    }
-
-    submitInput() {
-        console.log('space calls props.submit to trigger display');
-        this.setState({currentInput: { numbers: '', letters: ''}})
     }
 
     render() {
         return (
             <div>
-                Keyboard
-                <br />
                 {t9.map(item => {
                     return (
                         <KeyboardButton 
