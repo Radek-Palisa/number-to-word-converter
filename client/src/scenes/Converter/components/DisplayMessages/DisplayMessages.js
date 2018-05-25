@@ -8,10 +8,15 @@ class DisplayMessages extends Component {
             DisplayMessages
             <ol>
                 {this.props.messages.map((message, i) => {
-                    return <li key={i}>{message.text}</li>
+                    return (
+                        <li key={i}>
+                            <MessageItem 
+                                position={message.position}
+                                text={message.text} />
+                        </li>
+                    )
                 })}
             </ol>
-            <MessageItem />
         </div>
     );
   }
