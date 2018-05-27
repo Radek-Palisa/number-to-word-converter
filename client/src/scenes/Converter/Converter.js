@@ -94,7 +94,8 @@ class Converter extends Component {
         this.setState({
             messages,
             currentMessage: '',
-            inputValues: { numbers: '', letters: '' }
+            inputValues: { numbers: '', letters: '' },
+            suggestions: []
         })
     }
 
