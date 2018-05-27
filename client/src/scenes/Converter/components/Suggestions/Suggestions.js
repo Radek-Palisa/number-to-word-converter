@@ -50,7 +50,6 @@ class Suggestions extends Component {
         const hideListItem = (i) => {
             const startSlide = (this.state.slideDisplayed - 1) * 3;
             const endSlide = startSlide + 2;
-            console.log(startSlide)
             if (this.state.slideDisplayed === 1) {
                 if (i > 2) {
                     return {display: 'none'}
