@@ -15,8 +15,7 @@ class Converter extends Component {
                 numbers: '',
                 letters: ''
             },
-            suggestions: [],
-            wordChosen: null
+            suggestions: []
         }
 
         this.updateInputValues = this.updateInputValues.bind(this)
