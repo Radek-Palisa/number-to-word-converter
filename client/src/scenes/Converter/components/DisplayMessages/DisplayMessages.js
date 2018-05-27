@@ -6,15 +6,19 @@ class DisplayMessages extends Component {
   render() {
     return (
         <div className="displayMessages">
-            DisplayMessages
-            <ol>
+            <ol className="displayMessages__list">
+                <MessageItem 
+                    position="left"
+                    text="I heard you want to join kiwi.com" />
+                <MessageItem 
+                    position="right"
+                    text="Sure! But I need to finish this assignment first..." />
                 {this.props.messages.map((message, i) => {
                     return (
-                        <li key={i}>
-                            <MessageItem 
-                                position={message.position}
-                                text={message.text} />
-                        </li>
+                        <MessageItem
+                            key={i}
+                            position={message.position}
+                            text={message.text} />
                     )
                 })}
             </ol>
