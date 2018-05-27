@@ -4,6 +4,17 @@
     text-transform: uppercase;
     border: 1px solid #C6CBD4;
     background-color: #fff;
+    outline: none;
+
+}
+
+.keyboardButton:active {
+    color: white;
+    background-color: #157EFB;
+}
+
+.keyboardButton:focus {
+    box-shadow: inset 0px 0px 7px 1px #157EFB;
 }
 
 .keyboardButton__number {
