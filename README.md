@@ -1,5 +1,15 @@
 # T9 number to word Converter
 
-to install run yarn from root folder as well as from client folder.
+to install: from root folder run:
+```
+yarn
+```
+then cd into client folder and run:
+```
+yarn
+```
+to run the app, from the root folder run:
+```
+yarn dev
+```
 
-Dependency: create-react-app
